@@ -1,0 +1,28 @@
+import socket
+
+port = 5000
+s = socket.socket()             #creating socket object
+host = socket.gethostname()     #gets local machine name
+s.bind((host, port))            #bind to port
+s.listen(5)                     #start listening for client
+print("Server is listening...")
+
+while True:
+    (conn, address) = s.accept() #Establish connection with client
+    print("Got connection from" + address)
+    file = input("Enter the name of the file: ")
+    data = conn.recv(1024)
+    print('Server received', repr(data))
+
+    f = open(file, 'rb')
+    l = f.read(1024)
+    While (l):
+        conn.send(l)
+        print('Sent ',repr(1))
+        l = f.read(1024)
+    f.close()
+    
+    print('Done sending')
+    conn.send('Thank you for connecting')
+    conn.close()
+
