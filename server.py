@@ -10,19 +10,16 @@ print("Server is listening...")
 while True:
     (conn, address) = s.accept() #Establish connection with client
     print("Got connection from" + str(address))
-    file = input("Enter the name of the file: ")
-    #data = conn.recv(1024)
-    #print('Server received', repr(data))
+    file = input("Enter the name of the file: ")     #get name of file in same directory
 
-    f = open(file, 'rb')
-    l = f.read(1024)
+    f = open(file, 'rb')			     #open the file under the read bits option
+    l = f.read(1024)				     #read 1024 bytes to a variable
     while (l):
-        conn.send(l)
-        print('Sent ',repr(1))
+        conn.send(l)				     #send data
+        print('Sent ',repr(1))			     #confirm variable data is sent
         l = f.read(1024)
-    f.close()
+    f.close()					     #read next 1024 bytes	
     
     print('Done sending')
-    #conn.send('Thank you for connecting')
     conn.close()
 
