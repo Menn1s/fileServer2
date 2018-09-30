@@ -1,0 +1,5 @@
+import socket
+
+s = socket.socket()
+host = input('Enter the host IP: ')
+port = 5000
