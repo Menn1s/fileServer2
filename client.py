@@ -7,7 +7,7 @@ port = 5000
 s.connect((host, port))
 
 with open('received_file', 'wb') as f:  #create file and its object
-    print 'file opened'
+    print ('file opened')
     while True:
         print('receiving data...')
         data = s.recv(1024)             #receive data to the data variable
